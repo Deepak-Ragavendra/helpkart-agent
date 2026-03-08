@@ -301,7 +301,8 @@
   let isStreaming = false;
 
   function connect() {
-    ws = new WebSocket(`ws://localhost:3000`);
+    const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    ws = new WebSocket(`${wsProtocol}//${window.location.host}`);
 
     ws.onopen = () => {
       console.log('Connected to HelpKart server');
